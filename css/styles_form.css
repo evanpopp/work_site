@@ -1,0 +1,97 @@
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Animated gradient background to make the glass effect pop */
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #ffffff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Glassmorphism Container */
+    .glass-card {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      
+      /* The Glass Effect */
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); /* Safari support */
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+      
+      text-align: center;
+    }
+
+    .glass-card h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .glass-card p {
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Form Elements */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+/* Manual adjustment configuration */
+    altcha-widget {
+      display: block;        /* Ensures margin: 0 auto works properly */
+      width: 75%;            /* Adjust this percentage to make it manually wider or narrower */
+      max-width: 500px;      /* Prevents the widget from expanding too far on wide screens */
+      margin: 0 auto;        /* Centers the manually sized box inside the card */
+      
+      /* Adds a subtle glow behind the widget to separate it from the glass */
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+    }
+
+    /* Glassy Submit Button */
+    button {
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }

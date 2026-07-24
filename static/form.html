@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Verification</title>
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/public/robot.png">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="/css/styles_form.css">
+  
+  <script async defer src="https://cdn.jsdelivr.net/npm/altcha@1/dist/altcha.min.js" type="module"></script>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h1>Security Check</h1>
+    <p>Please verify you are human to access the site.</p>
+
+    <form action="/home" method="POST">
+      <altcha-widget challengeurl="/altcha/challenge"></altcha-widget>
+      
+      <button type="submit">Verify & Continue</button>
+    </form>
+  </div>
+
+</body>
+</html>

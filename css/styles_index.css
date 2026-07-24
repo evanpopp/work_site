@@ -1,0 +1,881 @@
+/* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column; /* <-- THIS IS THE MAGIC LINE */
+      align-items: center;    /* Centers the slab and buttons horizontally */
+      justify-content: center;
+      padding: 40px 20px;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #ffffff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Frosted Text Utility */
+    .frosted-text {
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+      filter: blur(0.3px);
+    }
+
+    /* Glass Resume Container */
+    .glass-resume {
+      width: 100%;
+      max-width: 850px;
+      padding: 40px 40px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Header Layout */
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 25px;
+      margin-bottom: 30px;
+    }
+
+/* Lock the container to the original small size */
+.profile-container {
+  position: relative;
+  display: inline-block;
+  width: 150px;  /* Adjust this to match your original headshot size */
+  height: 150px; /* Must match the width to be a perfect circle */
+  flex-shrink: 0; /* Prevents the header from squishing it */
+}
+
+/* Force the image to be a circle with a glass border */
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents the picture from stretching */
+  border-radius: 50%; /* Makes it a perfect circle */
+  
+  /* The Glass Border */
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  /* Interactive styling */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover effect */
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Position the arrow relative to the small circular container */
+.click-me-indicator {
+  position: absolute;
+  bottom: -15px; 
+  right: -50px;  /* Brought in closer so it doesn't push into your name */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  
+  font-family: 'Comic Sans MS', 'Caveat', cursive, sans-serif; 
+  font-size: 1.2rem;
+  
+  pointer-events: none; 
+  z-index: 3;
+  animation: floatBounce 2s infinite ease-in-out;
+}
+
+.curved-arrow {
+  margin-bottom: -5px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.click-text {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-8px) rotate(-10deg); }
+}
+
+    /* Headshot Window */
+    .headshot-window {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .headshot-window img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Center Title Area */
+    .title-area {
+      flex: 1;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .title-area h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .title-area h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Right Contact Info Block */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      /* Align elements along their left edge (logos first) */
+      align-items: flex-start;
+      /* Optional manual offset: adjust margin-left to shift the entire group */
+      margin-left: 0px; 
+    }
+
+    /* Contact Link Base Button Style */
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 8px;
+      width: 125px; /* Fixed width keeps all buttons uniform */
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(5px);
+    }
+
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      fill: #ffffff;
+      flex-shrink: 0;
+    }
+
+    /* App-Specific Color Schemes (Customize borders, backgrounds & hover states here) */
+    
+    /* E-mail (ProtonMail Purple Tint) */
+    .contact-link.email {
+      background: rgba(110, 84, 255, 0.2);
+      border: 2px solid rgba(110, 84, 255, 0.5);
+    }
+    .contact-link.email:hover {
+      background: rgba(110, 84, 255, 0.5);
+      border-color: rgba(110, 84, 255, 0.9);
+      box-shadow: 0 0 12px rgba(110, 84, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* GitHub (Dark Tint) */
+    .contact-link.github {
+      background: rgba(36, 41, 47, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    .contact-link.github:hover {
+      background: rgba(36, 41, 47, 0.6);
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* LinkedIn (Blue Tint) */
+    .contact-link.linkedin {
+      background: rgba(10, 102, 194, 0.25);
+      border: 2px solid rgba(10, 102, 194, 0.5);
+    }
+    .contact-link.linkedin:hover {
+      background: rgba(10, 102, 194, 0.55);
+      border-color: rgba(10, 102, 194, 0.9);
+      box-shadow: 0 0 12px rgba(10, 102, 194, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Content Styling */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .summary-text {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .resume-header {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .contact-info {
+        align-items: center;
+        margin-left: 0;
+      }
+    }
+
+    /* Glass Section Divider */
+.glass-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 30px 0; /* Spacing above and below the line */
+}
+
+/* Education Section Layout */
+.education-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+/* School Logo Window */
+.school-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.school-logo-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.school-logo-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Center Details Area */
+.education-details {
+  flex: 1;
+}
+
+.school-name {
+  font-size: 1.05rem;
+  font-weight: 700; /* Bold as requested */
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.degree-title {
+  font-size: 0.95rem;
+  font-weight: 400; /* Regular weight for contrast */
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Right-aligned Date Badge */
+/* Clean, non-interactive Date Text */
+.education-date {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7); /* Slightly softer white to indicate secondary info */
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+/* Expand Button (+) */
+.expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.expand-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: #ffffff;/* School Logo Window */
+
+.school-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+  transition: transform 0.3s ease;
+}
+
+.expand-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.expand-btn:hover svg {
+  transform: rotate(90deg); /* Nice little rotation animation */
+}
+
+/* --- FULLSCREEN BLUR OVERLAY --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999; /* Forces it to the very top */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Hides it perfectly */
+  opacity: 0;
+  visibility: hidden; 
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* --- THE GLASS CARD ITSELF --- */
+.modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  /* Start slightly lower and smaller */
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s ease-out;
+}
+
+/* Image styling inside the glass modal */
+  .modal-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- THE ACTIVE (VISIBLE) STATE --- */
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Makes the card float up when active */
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal Image Container */
+.modal-image-wrapper {
+  margin-top: 20px;
+  display: none; /* Controlled by JS */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-image-wrapper img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+}
+
+/* Close Button (X) */
+.close-btn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 90, 90, 0.6); /* Soft red hover for exit */
+  border-color: rgba(255, 90, 90, 0.9);
+}
+
+/* Blur effect applied to main resume when modal is open */
+.blur-active {
+  filter: blur(8px) brightness(0.8);
+  pointer-events: none;
+  transition: filter 0.4s ease, pointer-events 0.4s ease;
+}
+
+/* Experience Bullet List with Resume Indentation */
+.experience-list {
+  margin-top: 0px;
+  padding-left: 20px; /* Increases the left indent for the bullets */
+  display: flex;
+  flex-direction: column;
+  gap: 1px; /* Vertical spacing between bullet points */
+}
+
+.experience-list li {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  padding-left: 4px; /* Subtle spacing between the bullet dot and the text */
+}
+
+/* Optional: Customizes the look of the bullet dot itself */
+.experience-list li::marker {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85em; /* Slightly smaller dot for a refined look */
+}
+
+/* Experience Section Layout */
+.experience-item {
+  display: flex;
+  align-items: flex-start; /* Pushes the logo, date, and button to the top line */
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Experience Logo Window */
+.experience-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12); /* Frosted glass fill */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle glass border */
+  backdrop-filter: blur(8px); /* Glass blur effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  margin-top: 2px; /* Fine-tunes alignment with the top text line */
+}
+
+.experience-logo-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.experience-logo-link img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px; /* Inner rounded corners */
+  background: #ffffff; /* Crisp white tile */
+  padding: 0px; /* Padding inside the white box */
+  object-fit: contain; /* Keeps logo aspect ratio intact */
+  box-sizing: border-box;
+}
+
+/* Publication Badge Container (Adjusted to share row space with the button) */
+.publication-badge {
+  flex: 1; /* Takes up all remaining room, leaving space for the button */
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Interactive Badge Hover */
+.publication-badge.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Base Link Reset */
+a.publication-link {
+  flex: 1;
+  padding: 12px 12px;
+  text-decoration: none !important; /* Removes blue underline */
+  color: white !important;
+  display: flex !important;
+  flex-direction: column !important; /* Forces vertical stacking */
+  gap: 4px;
+}
+
+/* Citation Text Elements */
+.citation-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  display: block;
+}
+
+.citation-authors {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+}
+
+.citation-journal {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+}
+
+/* SPIE Theme (Blue Left Accent + Subtle Tint) */
+.spie-badge {
+  background: rgba(0, 79, 159, 0.2);
+  border-left: 5px solid #004f9f;
+}
+
+/* Pending Theme (Grey Tint) */
+.pending-badge {
+  background: rgba(26, 26, 26, 0.08);
+  border-left: 5px solid rgba(10, 10, 10, 0.4);
+}
+
+/* Non-interactive Pending Content Block */
+.pending-content {
+  flex: 1;
+  padding: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Remove internal button margin override since it's now outside */
+.publication-badge .expand-btn {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Publication Item Outer Row (Matches Experience layout) */
+.publication-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Skills Grid Layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+  gap: 16px; /* Spacing between rows and columns */
+  margin-bottom: 20px;
+}
+
+/* Base Skill Badge (Acts as a button) */
+.skill-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  font-family: inherit; /* Inherit your main font */
+}
+
+/* Hover effect for the entire badge */
+.skill-badge:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.1);
+}
+
+.skill-badge span {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adds clean spacing between the emoji and the text */
+  font-weight: 500;
+}
+
+/* --- Unique Color Themes --- */
+/* Blue Glass */
+.skill-blue { background: rgba(0, 123, 255, 0.2); border-color: rgba(0, 123, 255, 0.5); }
+/* Red Glass */
+.skill-red { background: rgba(220, 53, 69, 0.2); border-color: rgba(220, 53, 69, 0.5); }
+/* Green Glass */
+.skill-green { background: rgba(40, 167, 69, 0.2); border-color: rgba(40, 167, 69, 0.5); }
+/* Purple Glass */
+.skill-purple { background: rgba(111, 66, 193, 0.2); border-color: rgba(111, 66, 193, 0.5); }
+/* Yellow/Gold Glass */
+.skill-gold { background: rgba(255, 193, 7, 0.2); border-color: rgba(255, 193, 7, 0.5); }
+/* Teal Glass */
+.skill-teal { background: rgba(32, 201, 151, 0.2); border-color: rgba(32, 201, 151, 0.5); }
+
+/* Certifications Section Container */
+.cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 20px !important;            /* Force the gap */
+  width: 100%;
+  padding: 12px 12px !important;   /* Force the inner spacing */
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Reset stubborn button styles */
+  appearance: none; 
+  -webkit-appearance: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  color: white;
+  box-sizing: border-box;
+}
+
+.cert-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Certification Logo Wrapper */
+.cert-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: white; /* Keeps transparent logos readable */
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+/* Text Detail Container */
+.cert-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Typography matching LinkedIn structure */
+.cert-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cert-meta {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Company Specific Color Themes --- */
+
+/* IPC (Purple Gradient & Border) */
+.cert-ipc {
+  background: linear-gradient(135deg, rgba(102, 45, 145, 0.2), rgba(255, 255, 255, 0.05));
+  border-left: 5px solid #662d91; 
+}
+
+/* Dassault Systèmes (Blue Gradient & Border) */
+.cert-dassault {
+  background: linear-gradient(135deg, rgba(0, 85, 129, 0.2), rgba(255, 255, 255, 0.05));
+  border-left: 5px solid #005581; 
+}
+
+/* Integrated Plus Icon for Badges */
+.integrated-plus {
+  width: 20px;
+  height: 20px;
+  fill: rgba(255, 255, 255, 0.5); /* Soft white to blend with the glass */
+  margin-left: auto; /* Automatically pushes the icon to the far right */
+  flex-shrink: 0; /* Prevents the icon from squishing if text is long */
+  transition: fill 0.3s ease;
+}
+
+/* Brighten the plus icon when hovering over the parent badge */
+.cert-badge:hover .integrated-plus,
+.skill-badge:hover .integrated-plus {
+  fill: rgba(255, 255, 255, 1);
+}
+
+/* Forces the buttons container to take up its own full line below the slab */
+.action-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;            /* Forces it to break to the next line */
+  margin-top: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+/* Prevents buttons from stretching vertically */
+.action-btn {
+  height: fit-content;     /* Locks height to content size */
+  align-self: center;      /* Prevents flex stretching */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  /* Using 0.4s ease-out slows down the movement and makes the easing feel smooth */
+  transition: transform 0.3s ease-out, background 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* SVG Icon alignment inside the buttons */
+.action-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+
+/* Master Page Wrapper to stack slab and buttons vertically */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the slab and buttons on the screen */
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Ensure body doesn't force a row direction */
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Minimal Glass Footer */
+.site-footer {
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
