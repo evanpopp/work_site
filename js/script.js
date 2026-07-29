@@ -21,13 +21,13 @@ function shareResume() {
     navigator.share({
       title: 'Evan Popp - Resume',
       text: 'Check out the resume of Evan Popp, Electrical Engineer (Photonics).',
-      url: window.location.href, // Automatically grabs your website's URL
+      url: 'https://evanpopp.me/',
     })
     .then(() => console.log('Successfully shared'))
     .catch((error) => console.log('Error sharing:', error));
   } else {
     // Fallback for older browsers (like copying to clipboard)
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText('https://evanpopp.me/');
     alert('Link copied to clipboard!');
   }
 }

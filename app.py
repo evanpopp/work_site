@@ -13,6 +13,7 @@ app = FastAPI()
 app.mount("/public", StaticFiles(directory="public"), name="public")
 app.mount("/css", StaticFiles(directory="css"), name="css")
 app.mount("/js", StaticFiles(directory="js"), name="js")
+app.mount("/resumes", StaticFiles(directory="resumes"), name="resumes")
 templates = Jinja2Templates(directory="static")
 
 ## HMAC Key Setup ##
@@ -31,7 +32,7 @@ async def altcha_challenge():
         algorithm="SHA-256",
         hmac_key=HMAC_KEY,
         max_number=100_000,
-        expires=datetime.now(timezone.utc) + timedelta(minutes=1),
+        expires=datetime.now(timezone.utc) + timedelta(minutes=10),
     )
     challenge = create_challenge_v1(options)
     data = {
@@ -58,6 +59,7 @@ async def health_check():
     return {"status": "ok"}
 
 '''
-uvicorn app:app --host 0.0.0.0 --port 8000
-sudo systemctl restart popps106
+uvicorn app:app --host 127.0.0.1 --port 8001
+uvicorn app:app --host 0.0.0.0 --port 8001
+sudo systemctl restart evanpopp
 '''

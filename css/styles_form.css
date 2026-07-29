@@ -19,9 +19,17 @@
     }
 
     @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     /* Glassmorphism Container */
@@ -30,14 +38,15 @@
       max-width: 400px;
       padding: 40px 30px;
       border-radius: 20px;
-      
+
       /* The Glass Effect */
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px); /* Safari support */
+      -webkit-backdrop-filter: blur(12px);
+      /* Safari support */
       border: 1px solid rgba(255, 255, 255, 0.3);
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-      
+
       text-align: center;
     }
 
@@ -45,7 +54,7 @@
       font-size: 1.8rem;
       margin-bottom: 10px;
       font-weight: 600;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .glass-card p {
@@ -61,15 +70,19 @@
       gap: 20px;
     }
 
-/* Manual adjustment configuration */
+    /* Manual adjustment configuration */
     altcha-widget {
-      display: block;        /* Ensures margin: 0 auto works properly */
-      width: 75%;            /* Adjust this percentage to make it manually wider or narrower */
-      max-width: 500px;      /* Prevents the widget from expanding too far on wide screens */
-      margin: 0 auto;        /* Centers the manually sized box inside the card */
-      
+      display: block;
+      /* Ensures margin: 0 auto works properly */
+      width: 75%;
+      /* Adjust this percentage to make it manually wider or narrower */
+      max-width: 500px;
+      /* Prevents the widget from expanding too far on wide screens */
+      margin: 0 auto;
+      /* Centers the manually sized box inside the card */
+
       /* Adds a subtle glow behind the widget to separate it from the glass */
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
     }
 
     /* Glassy Submit Button */
@@ -89,7 +102,7 @@
     button:hover {
       background: rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     button:active {
