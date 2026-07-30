@@ -1,5 +1,17 @@
+# Secret configuration
 .env
 .env.local
-*.log
+
+# Python artifacts
 __pycache__/
+*.pyc
+.venv/
+env/
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# Misc
 temp.txt

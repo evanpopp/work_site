@@ -4,6 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Evan Popp - Electrical Engineer (Photonics)" />
+  <meta name="description"
+    content="Portfolio and resume of Evan Popp, specializing in Electrical Engineering and Photonics." />
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://evanpopp.me/" />
+  <meta property="og:title" content="Evan Popp - Electrical Engineer" />
+  <meta property="og:description"
+    content="Portfolio and resume of Evan Popp, specializing in Electrical Engineering and Photonics." />
+  <meta property="og:image" content="https://evanpopp.me/public/prism.png" />
+
   <title>Security Verification</title>
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="/public/robot.png">
@@ -19,6 +33,13 @@
   <div class="glass-card">
     <h1>Security Check</h1>
     <p>Please verify you are human to access the site.</p>
+
+    <!-- Error Message Banner -->
+    {% if error_message %}
+    <div class="error-message">
+      {{ error_message }}
+    </div>
+    {% endif %}
 
     <form action="/home" method="POST">
       <altcha-widget challengeurl="/altcha/challenge"></altcha-widget>

@@ -57,12 +57,19 @@ body {
 
 /* Header Layout */
 .resume-header {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 25px;
   margin-bottom: 30px;
+  height: auto !important; 
+  min-height: fit-content;
+  gap: 20px;
+  width: 100%
 }
 
 /* Lock the container to the original small size */
@@ -73,7 +80,7 @@ body {
   /* Adjust this to match your original headshot size */
   height: 150px;
   /* Must match the width to be a perfect circle */
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
   /* Prevents the header from squishing it */
 }
 
@@ -95,6 +102,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
   z-index: 2;
+  flex-shrink: 0;
 }
 
 /* Hover effect */
@@ -143,27 +151,6 @@ body {
   50% {
     transform: translateY(-8px) rotate(-10deg);
   }
-}
-
-/* Headshot Window */
-.headshot-window {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-}
-
-.headshot-window img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Center Title Area */
@@ -492,19 +479,6 @@ body {
   flex-direction: column;
 }
 
-/* Modal Icon Box (Keep this the same) */
-.modal-icon {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  border-radius: 8px;
-  object-fit: contain;
-  background: white;
-  padding: 3px;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
 .modal-body {
   font-size: 1.05rem;
   line-height: 1.6;
@@ -560,57 +534,6 @@ body {
 /* Makes the card float up when active */
 .modal-overlay.active .modal-content {
   transform: translateY(0) scale(1);
-}
-
-/* Modal Image Container */
-.modal-image-wrapper {
-  margin-top: 20px;
-  display: none;
-  /* Controlled by JS */
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-image-wrapper img {
-  max-width: 100%;
-  max-height: 300px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  object-fit: contain;
-}
-
-/* Close Button (X) */
-.close-btn {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: white;
-  font-size: 1.2rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.close-btn:hover {
-  background: rgba(255, 90, 90, 0.6);
-  /* Soft red hover for exit */
-  border-color: rgba(255, 90, 90, 0.9);
-}
-
-/* Blur effect applied to main resume when modal is open */
-.blur-active {
-  filter: blur(8px) brightness(0.8);
-  pointer-events: none;
-  transition: filter 0.4s ease, pointer-events 0.4s ease;
 }
 
 /* Experience Bullet List with Resume Indentation */
@@ -857,36 +780,6 @@ a.publication-link {
   border-color: rgba(32, 201, 151, 0.5);
 }
 
-/* Certifications Section Container */
-.cert-badge {
-  display: flex;
-  align-items: center;
-  gap: 20px !important;
-  /* Force the gap */
-  width: 100%;
-  padding: 12px 12px !important;
-  /* Force the inner spacing */
-  margin-bottom: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* Reset stubborn button styles */
-  appearance: none;
-  -webkit-appearance: none;
-  background: transparent;
-  text-align: left;
-  font-family: inherit;
-  color: white;
-  box-sizing: border-box;
-}
-
-.cert-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
 /* Ensure the logo keeps its square, boxed look */
 .cert-logo {
   width: 48px;
@@ -921,20 +814,6 @@ a.publication-link {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* --- Company Specific Color Themes --- */
-
-/* IPC (Purple Gradient & Border) */
-.cert-ipc {
-  background: linear-gradient(135deg, rgba(102, 45, 145, 0.2), rgba(255, 255, 255, 0.05));
-  border-left: 5px solid #662d91;
-}
-
-/* Dassault Systèmes (Blue Gradient & Border) */
-.cert-dassault {
-  background: linear-gradient(135deg, rgba(0, 85, 129, 0.2), rgba(255, 255, 255, 0.05));
-  border-left: 5px solid #005581;
-}
-
 /* Integrated Plus Icon for Badges */
 .integrated-plus {
   width: 20px;
@@ -964,16 +843,16 @@ a.publication-link {
 }
 
 /* The Main Link Card (Mimics your Publications style) */
-.cert-link-card {
+.cert-link-ipc {
   display: flex;
   align-items: center;
   gap: 15px;
   flex-grow: 1;
   /* Forces the card to take up all available space to the left of the + */
   padding: 12px 15px;
-  background: rgba(5, 231, 5, 0.209);
+  background: linear-gradient(135deg, rgba(102, 45, 145, 0.2), rgba(255, 255, 255, 0.05));
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: 4px solid rgba(0, 254, 0, 0.5);
+  border-left: 5px solid #6c1da9;
   /* Optional: Adds a left accent line like your publications */
   border-radius: 12px;
   text-decoration: none;
@@ -982,7 +861,31 @@ a.publication-link {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.cert-link-card:hover {
+.cert-link-ipc:hover {
+  background: rgba(209, 227, 10, 0.2);
+  transform: translateY(-2px);
+}
+
+/* The Main Link Card (Mimics your Publications style) */
+.cert-link-das {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+  /* Forces the card to take up all available space to the left of the + */
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(0, 85, 129, 0.2), rgba(255, 255, 255, 0.05));
+  border-left: 5px solid #005581;
+  /* Optional: Adds a left accent line like your publications */
+  border-radius: 12px;
+  text-decoration: none;
+  /* Removes standard link underlining */
+  color: inherit;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cert-link-das:hover {
   background: rgba(209, 227, 10, 0.2);
   transform: translateY(-2px);
 }
@@ -1017,6 +920,9 @@ a.publication-link {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
+  font-size: 1rem;       /* Locks both to the exact same size */
+  font-weight: 600;      /* Makes them bold and readable */
+  font-family: inherit;  /* Forces buttons to use your site's main font */
   /* Using 0.4s ease-out slows down the movement and makes the easing feel smooth */
   transition: transform 0.3s ease-out, background 0.3s ease-out, box-shadow 0.3s ease-out;
 }
@@ -1054,7 +960,7 @@ body {
 }
 
 body,
-.resume-card {
+.glass-resume {
   min-width: 900px;
   /* Forces the layout to stay at desktop size */
 }
@@ -1085,4 +991,18 @@ body,
   justify-content: center;
   gap: 16px;
   margin-top: 8px;
+}
+
+/* Standardize Modal Link Colors */
+.modal-body a,
+.modal-body a:visited {
+  color: #4da6ff; /* A bright, legible blue */
+  text-decoration: none; /* Removes the default underline */
+  transition: color 0.2s ease;
+}
+
+/* Add a nice hover effect so users know it's clickable */
+.modal-body a:hover {
+  color: #80c1ff; /* Slightly lighter blue on hover */
+  text-decoration: underline;
 }
