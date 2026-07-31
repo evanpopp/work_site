@@ -20,19 +20,27 @@ A lightweight, modern web portfolio and bot-protected verification gateway built
 Make sure you have Python 3.10+ installed.
 
 ### 2. Clone the Repository
+```bash
 git clone [https://github.com/evanpopp/work_site.git](https://github.com/evanpopp/work_site.git)
 cd work_site
+```
 
 ### 3. Set Up Environment Variables
+```bash
 cp .env.example .env
 sudo nano .env
+```
 ALTCHA_HMAC_KEY=your_random_secret_string_here
 
 ### 4. Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
 ### 5. Run the Application
+```bash
 uvicorn app:app --host 127.0.0.1 --port 8001
+```
 
 ---
 

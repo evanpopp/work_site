@@ -29,14 +29,14 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         # Forces HTTPS for one year (31536000 seconds) including subdomains
         response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         
-        # Controls where resources can be loaded from
-        # Note: We explicitly allow https://cdn.jsdelivr.net so your ALTCHA widget loads correctly
+        # Strict, Observatory-compliant Content Security Policy
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
-            "style-src 'self' 'unsafe-inline'; "
-            "img-src 'self' data:;"
-            "worker-src 'self' blob:;"
+            "script-src 'self' https://cdn.jsdelivr.net; " # Removed 'unsafe-inline'
+            "style-src 'self' 'unsafe-inline'; "         # Keeps styles working
+            "img-src 'self' data:; "
+            "worker-src 'self' blob:; "
+            "object-src 'none';"                         # Explicitly blocks legacy plugins (Flash/Java)
         )
         
         # Controls how much referrer information is passed when routing away from your site
@@ -103,6 +103,7 @@ async def robots():
     return FileResponse("static/robots.txt")
 
 @app.post("/home", response_class=HTMLResponse)
+@limiter.limit("10/minute")  # Limits visitors to 10 challenges per minute
 async def home(request: Request, altcha: str = Form(None)):
     if not altcha:
         return templates.TemplateResponse(

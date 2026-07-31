@@ -19,6 +19,8 @@ body {
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: #ffffff;
+  margin: 0;
+  min-width: 900px;
 }
 
 @keyframes gradientBG {
@@ -53,6 +55,7 @@ body {
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  min-width: 900px;
 }
 
 /* Header Layout */
@@ -66,7 +69,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 25px;
   margin-bottom: 30px;
-  height: auto !important; 
+  height: auto !important;
   min-height: fit-content;
   gap: 20px;
   width: 100%
@@ -377,22 +380,6 @@ body {
   width: 16px;
   height: 16px;
   fill: #ffffff;
-  /* School Logo Window */
-
-  .school-logo-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 6px;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-  }
-
   transition: transform 0.3s ease;
 }
 
@@ -409,9 +396,12 @@ body {
 
 /* --- FULLSCREEN BLUR OVERLAY --- */
 .modal-overlay {
-  position: fixed;
+  /* Locks the overlay to the browser window, not the page content */
+  position: fixed !important;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.4);
@@ -434,7 +424,8 @@ body {
 .modal-content {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.5); /* Simulates top-down lighting */
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  /* Simulates top-down lighting */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
@@ -452,7 +443,7 @@ body {
 .modal-header {
   display: flex;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   width: 100%;
   gap: 14px;
   margin-bottom: 16px;
@@ -489,12 +480,15 @@ body {
 /* Styling for lists inside the modal */
 .modal-list {
   margin: 8px 0 0 0;
-  padding-left: 20px; /* Controls the exact left indent distance */
-  list-style-type: disc; /* Clean circular bullet points */
+  padding-left: 20px;
+  /* Controls the exact left indent distance */
+  list-style-type: disc;
+  /* Clean circular bullet points */
 }
 
 .modal-list li {
-  margin-bottom: 6px; /* Adds breathing room between bullet points */
+  margin-bottom: 6px;
+  /* Adds breathing room between bullet points */
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -504,7 +498,8 @@ body {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin: 10px 0 15px 0; /* Adds breathing room around the image */
+  margin: 10px 0 15px 0;
+  /* Adds breathing room around the image */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: block;
 }
@@ -827,12 +822,6 @@ a.publication-link {
   transition: fill 0.3s ease;
 }
 
-/* Brighten the plus icon when hovering over the parent badge */
-.cert-badge:hover .integrated-plus,
-.skill-badge:hover .integrated-plus {
-  fill: rgba(255, 255, 255, 1);
-}
-
 /* Container to hold the link card and the plus button side-by-side */
 .cert-item-container {
   display: flex;
@@ -920,9 +909,12 @@ a.publication-link {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  font-size: 1rem;       /* Locks both to the exact same size */
-  font-weight: 600;      /* Makes them bold and readable */
-  font-family: inherit;  /* Forces buttons to use your site's main font */
+  font-size: 1rem;
+  /* Locks both to the exact same size */
+  font-weight: 600;
+  /* Makes them bold and readable */
+  font-family: inherit;
+  /* Forces buttons to use your site's main font */
   /* Using 0.4s ease-out slows down the movement and makes the easing feel smooth */
   transition: transform 0.3s ease-out, background 0.3s ease-out, box-shadow 0.3s ease-out;
 }
@@ -938,31 +930,6 @@ a.publication-link {
   width: 18px;
   height: 18px;
   fill: white;
-}
-
-/* Master Page Wrapper to stack slab and buttons vertically */
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Centers the slab and buttons on the screen */
-  width: 100%;
-  min-height: 100vh;
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-
-/* Ensure body doesn't force a row direction */
-body {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-body,
-.glass-resume {
-  min-width: 900px;
-  /* Forces the layout to stay at desktop size */
 }
 
 /* Minimal Glass Footer */
@@ -996,13 +963,16 @@ body,
 /* Standardize Modal Link Colors */
 .modal-body a,
 .modal-body a:visited {
-  color: #4da6ff; /* A bright, legible blue */
-  text-decoration: none; /* Removes the default underline */
+  color: #4da6ff;
+  /* A bright, legible blue */
+  text-decoration: none;
+  /* Removes the default underline */
   transition: color 0.2s ease;
 }
 
 /* Add a nice hover effect so users know it's clickable */
 .modal-body a:hover {
-  color: #80c1ff; /* Slightly lighter blue on hover */
+  color: #80c1ff;
+  /* Slightly lighter blue on hover */
   text-decoration: underline;
 }

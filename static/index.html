@@ -22,8 +22,9 @@
       <!-- Top Left: Headshot -->
       <div class="profile-container">
         <!-- Clickable Profile Picture -->
-        <img src="/public/headshot.webp" alt="Evan Popp" class="profile-pic"
-          onclick="openModal('<div class=\'modal-header\'><h4>Welcome</h4></div><div class=\'modal-body\'><p>Hello! Thank you for visiting!</p><p>My goal with this site is to convey my professional background with ease, while also providing in-depth detail of my work and accomplishments. If you would like to contact me, please do not hesitate to do so.</p><br><b>Site Guide:</b></br><p>On this site, I use a combination of pop-ups and links to give more in depth detail. Any badge with a + sign signifies a pop-up, with the remaining badges being links. At the top right, you can use those links to contact me or view my github. At the bottom, you can share this site and/or download my resume. At the very bottom of this page, you can use those links to view the source code for this site, the privacy policy and the favicon attributions.</p></div>')">
+        <img src="/public/headshot.webp" alt="Evan Popp" class="profile-pic modal-trigger" data-target="guide-modal"
+          style="cursor: pointer;">
+
         <!-- Floating Arrow and Text -->
         <div class="click-me-indicator">
           <!-- Hand-drawn style SVG curved arrow -->
@@ -73,9 +74,9 @@
     <section>
       <h3 class="section-title frosted-text">Summary</h3>
       <div class="summary-text frosted-text">
-        I am an electrical engineer specializing in photonics, specifically with fiber optics and electro-optics.
-        However, I also have a wide range of engineering experience from high-power electronics, high-speed PCB design,
-        basic mechanical design, coding and working in a lab environment.
+        I am an electrical engineer specializing in photonics, specifically with fiber optics and electro-optics. <br>
+        However, I also have a range of engineering experience from high-power electronics,
+        mixed-signal circuit and PCB design, mechanical design, coding and working in a lab environment.
       </div>
     </section>
 
@@ -95,8 +96,7 @@
         </div>
         <div class="education-date frosted-text">Sep 2025 – Dec 2026</div>
         <!-- 2. ADD EXPAND BUTTON HERE -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Master of Science</h4></div><div class=\'modal-body\'><p>In graduate school, I have been able to pursue further education directly related to the field of photonics. I have also had the opportunity to work as a graduate student researcher, which allowed me to pursue my interests in a lab. </p><br><b>Notable Courses:</b></br><ul class=\'modal-list\'><li>ECE 240C: Optical Modulation and Detection</li><li>ECE 212C: Nanophotonics</li><li>ECE 212A: Nanoscience and Nanotechnology</li><li>ECE 240A: Lasers and Optics</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="ms-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -114,8 +114,7 @@
         </div>
         <div class="education-date frosted-text">Aug 2020 – Jul 2023</div>
         <!-- 2. ADD EXPAND BUTTON HERE -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Bachelor of Science</h4></div><div class=\'modal-body\'><p>During my undergraduate studies, I learned the fundamentals of electrical engineering with my area of focus being photonics. This depth overall focused on the classical and quantum aspects of light, but also covered semiconductor physics and the fundamentals of electromagnetics.</p><br><b>Notable Courses:</b></br><ul class=\'modal-list\'><li>PHYS 2D: Relativity and Quantum Physics</li><li>ECE 185: Lasers and Modulators</li><li>ECE 183: Optical Electronics</li><li>ECE 182: Electromagnetic Optics</li><li>ECE 135A: Semiconductor Physics</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="bs-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -132,8 +131,7 @@
         </div>
         <div class="education-date frosted-text">Jan 2017 – Jun 2020</div>
         <!-- 2. ADD EXPAND BUTTON HERE -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Associate in Science</h4></div><div class=\'modal-body\'><p>At this community college, I fulfilled all of my general education, and foundational physics/mathematics requirements before transferring to UCSD. I also had the opportunity to take classes teaching the fundamentals of CAD, this is where I received my CSWA certification. I decided to go to community college first to minimize any potential student debt.</p></div>')">
+        <button class="expand-btn modal-trigger" data-target="as-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -145,8 +143,8 @@
 
     <section>
       <h3 class="section-title frosted-text">Experience</h3>
+      <!-- GSR -->
       <div class="experience-item"> <!-- Reusing row container -->
-        <!-- Company Logo -->
         <a href="https://ece.ucsd.edu" target="_blank" class="experience-logo-link"
           title="UCSD Electrical & Computer Engineering">
           <img src="/public/jacobs.png" alt="UCSD Logo" onerror="this.style.display='none'">
@@ -163,15 +161,14 @@
         <!-- Date on the Right -->
         <div class="education-date frosted-text">Sep 2025 – Jun 2026</div>
         <!-- Optional Expand Button -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>UCSD Research</h4></div><div class=\'modal-body\'><img src=\'/public/2D_transfer.webp\' alt=\'2D Transfer\' class=\'modal-body-image\'><p>In this role, I came up with my own research topic to pursue while in graduate studies. My research area of choice involved utilizing the phenomena of inelastic electron tunneling to design an ultrafast, compact and incoherent optical emitter. This research had to stop however due to NSF funding cuts.</p><br><b>Responsibilities and Achievements:</b></br><ul class=\'modal-list\'><li>Utilized Python and Ansys Lumerical to simulate the quantum aspects of my designs as well as verify nano-antenna scattering efficiencies respectively.</li><li>Designed and built an affordable 2D material transfer station with an optional air tight enclosure for a nitrogen atmosphere.</li><li>Received some experience in 2D transfer and heterostructure stacking.</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="gsr-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
       </div>
+      <!-- Vector Atomic -->
       <div class="experience-item"> <!-- Reusing row container -->
-        <!-- Company Logo -->
         <a href="https://vectoratomic.com" target="_blank" class="experience-logo-link">
           <img src="/public/vector-atomic-logo.png" alt="Company Logo" onerror="this.style.display='none'">
         </a>
@@ -188,15 +185,14 @@
         <!-- Date on the Right -->
         <div class="education-date frosted-text">Sep 2023 – Aug 2025</div>
         <!-- Optional Expand Button -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Vector Atomic</h4></div><div class=\'modal-body\'><img src=\'/public/VA_groupshot.webp\' alt=\'VA Groupshot\' class=\'modal-body-image\'><p>Vector Atomic focuses on developing precision timing and measurement devices using quantum technologies. This was the first full time engineering job that I received after graduating with my Bachelors. In this role, I was able to use my range of engineering experience and my photonics education to continue to improve the capabilities of the optical atomic clock product line.</p><br><b>Responsibilities and Achievements:</b></br><ul class=\'modal-list\'><li>Developed piezoelectric laser wavelength tuning drivers used for atomic clock frequency locking.</li><li>Designed prototype circuits used for laser pump modulation, liquid lens control, and spectroscopy signal acquisition.</li><li>Designed acoustic and mechanical isolation for laser frequency noise improvements.</li><li>Assembly, testing and troubleshooting CW fiber laser systems.</li><li>Testing and debugging electrical designs in a lab environment.</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="va-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
       </div>
+      <!-- Ametek -->
       <div class="experience-item"> <!-- Reusing row container -->
-        <!-- Company Logo -->
         <a href="https://www.programmablepower.com/" target="_blank" class="experience-logo-link">
           <img src="/public/ametek.png" alt="Company Logo" onerror="this.style.display='none'">
         </a>
@@ -212,15 +208,14 @@
         <!-- Date on the Right -->
         <div class="education-date frosted-text">Aug 2020 – Aug 2023</div>
         <!-- Optional Expand Button -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Ametek</h4></div><div class=\'modal-body\'><img src=\'/public/tahoe.webp\' alt=\'Tahoe\' class=\'modal-body-image\'><p>Ametek Programmable Power focuses on the design and manufacturing of power supplies and test equipment. I worked at this company part time during my undergrad education, right after Hughes Circuits. I joined this company to get more experience in electrical design and testing, rather than just pure layout. </p><br><b>Responsibilities and Achievements:</b></br><ul class=\'modal-list\'><li>Developed analog sensors, control circuitry and PCBs for power supplies up to 45kW (shown above).</li><li>Modified and designed sheet metal chassis, CNC machined bus bars, and high power magnetics.</li><li>Designed cable harnesses in conjunction with complete electro-mechanical assemblies.</li><li>Tested high-power electrical components for production and R&D development.</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="ametek-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
       </div>
+      <!-- USMC -->
       <div class="experience-item"> <!-- Reusing row container -->
-        <!-- Company Logo -->
         <a href="https://www.marforres.marines.mil/Units/Force-Headquarters-Group/Intelligence-Support-Battalion/CI-HUMINT-Company-A/"
           target="_blank" class="experience-logo-link">
           <img src="/public/USMC_logo.png" alt="Company Logo" onerror="this.style.display='none'">
@@ -235,17 +230,16 @@
           </ul>
         </div>
         <!-- Date on the Right -->
-        <div class="education-date frosted-text">Jun 2015 – Dec 2022</div>
+        <div class="education-date frosted-text">Jun 2015 – Mar 2022</div>
         <!-- Optional Expand Button -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>USMC Reserves</h4></div><div class=\'modal-body\'><img src=\'/public/USMC_groupshot.webp\' alt=\'USMC Groupshot\' class=\'modal-body-image\'><p>I joined the USMC Reserves right out of high school. Joining the Marines was somewhat of a family tradition, I wanted to do this while pursuing my passion for engineering. I would attend training one weekend per month and then a 2 week session over the summer.</p><br><b>Responsibilities and Achievements:</b></br><ul class=\'modal-list\'><li>Repaired and maintained small arms and various equipment.</li><li>Taught at a leadership course for Marines in the reserve.</li><li>Was a Combat Marksmanship Coach for my secondary occupation.</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="usmc-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
       </div>
+      <!-- Hughes Circuits -->
       <div class="experience-item"> <!-- Reusing row container -->
-        <!-- Company Logo -->
         <a href="https://www.hughescircuits.com/" target="_blank" class="experience-logo-link">
           <img src="/public/hughes_circuits_logo.png" alt="Company Logo" onerror="this.style.display='none'">
         </a>
@@ -255,14 +249,13 @@
           <div class="degree-title frosted-text">PCB Layout Designer</div>
           <!-- Bullet Points -->
           <ul class="experience-list frosted-text">
-            <li> Designed PCB's for RF, digital, analog and high-power applications</li>
+            <li> Designed PCBs for RF, digital, analog and high-power applications</li>
           </ul>
         </div>
         <!-- Date on the Right -->
         <div class="education-date frosted-text">Jan 2018 – Jul 2020</div>
         <!-- Optional Expand Button -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Hughes Circuits</h4></div><div class=\'modal-body\'><p>Hughes Circuits focuses on the speedy manufacturing and layout of PCBs, primarily for DoD contractors. I worked at this company part time during my undergrad education. This was the first engineering job I had, and I was able to get it from the CAD education I received at community college.</p><br><b>Responsibilities and Achievements:</b></br><ul class=\'modal-list\'><li>Designed PCBs for a wide range of purposes for DoD contractors.</li><li>Received CID certification.</li></ul></div>')">
+        <button class="expand-btn modal-trigger" data-target="hughes-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -287,8 +280,7 @@
           </a>
         </div>
         <!-- Expansion Button (Outside the badge, aligned with other sections) -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Optical Timekeeping in the Field</h4></div><div class=\'modal-body\'><p>In this conference, my team presented and showed off the various capabilities of our optical clocks, as well as the experiments the clocks were a part of. For my contribution, I was attributed for my design work with the updated clock. I also assisted in setting up field experiments to test the environmental ruggedness of the clock.</p></div>')">
+        <button class="expand-btn modal-trigger" data-target="spie-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -305,8 +297,7 @@
           </div>
         </div>
         <!-- Expansion Button (Outside the badge, aligned with other sections) -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>Three-Node Timing Network</h4></div><div class=\'modal-body\'><p>In this paper, my team and I experimentally demonstrated that our optical clocks could be synced over a 14.5km free space optical link at NIST. This was one of the first projects that I worked on at this company. For my contribution, I assisted in designing and building the various racks used to hold the clocks and equipment. I was also present during the experiment and assisted in setting it up.</p></div><div class=\'modal-footer\'>This paper is currently in review</div>')">
+        <button class="expand-btn modal-trigger" data-target="paper-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -320,49 +311,43 @@
       <h3 class="section-title frosted-text">Skills</h3>
       <div class="skills-grid">
         <!-- Skill 1 | Coding -->
-        <button class="skill-badge skill-green"
-          onclick="openModal('<div class=\'modal-header\'><h4>Python | C</h4></div><div class=\'modal-body\'><p>I have been coding in Python consistently for a couple of years now, for about half of that time I utilized C. In industry, I would often use a combination of Python and C to record/manipulate data and program MCUs respectively. During my time in graduate studies, I used Python extensively for predicting the quantum behavior of my research designs, as well as for my schoolwork.</p></div>')">
-          <span>🐍<b>Python | C</b></span>
+        <button class="skill-badge skill-green modal-trigger" data-target="coding-modal" <span>🐍&nbsp;<b>Python |
+            C</b></span>
           <svg class="integrated-plus" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
         <!-- Skill 2 | Mechanical -->
-        <button class="skill-badge skill-red"
-          onclick="openModal('<div class=\'modal-header\'><h4>Mechanical Design</h4></div><div class=\'modal-body\'><p>I have been utilizing Solidworks in industry for multiple years, I also recently started using AutoDesk360 for personal projects and my research. I have experience designing sheet metal chassis, CNC machined mounting components, professionally 3D printed parts, cable and harness design, as well as creating assembly instructions for production.</p></div>')">
-          <span>🔩<b>Mechanical Design</b></span>
+        <button class="skill-badge skill-red modal-trigger" data-target="mech-modal" <span>🔩&nbsp;<b>Mechanical
+            Design</b></span>
           <svg class="integrated-plus" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
         <!-- Skill 3 | PCB Design-->
-        <button class="skill-badge skill-teal"
-          onclick="openModal('<div class=\'modal-header\'><h4>PCB Design</h4></div><div class=\'modal-body\'><p>For multiple years I have had experience designing PCBs using both Altium and PADs. This was one of the first industry skills that I gained. I have had experience designing PCBs for a wide range of purposes, such as RF, high-speed digital, high-power, analog and various mixed-signal designs.</p></div>')">
-          <span>⚡️<b>PCB Design</b></span>
+        <button class="skill-badge skill-teal modal-trigger" data-target="pcb-modal" <span>⚡️&nbsp;<b>PCB
+            Design</b></span>
           <svg class="integrated-plus" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
         <!-- Skill 4 | Electrical-->
-        <button class="skill-badge skill-purple"
-          onclick="openModal('<div class=\'modal-header\'><h4>Electrical Design</h4></div><div class=\'modal-body\'><p>For a few years now, I have had experience designing electrical circuits and systems in industry, with assistance from simulation tools such as LTSpice. I have had a range of design experience, from analog sensing and control circuitry in power supplies, customer facing outputs and controls, and very low noise opto-electric interfaces. </p></div>')">
-          <span>📡<b>Electrical Design</b></span>
+        <button class="skill-badge skill-purple modal-trigger" data-target="elec-modal" <span>📡&nbsp;<b>Electrical
+            Design</b></span>
           <svg class="integrated-plus" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
         <!-- Skill 5 | Optical Assembly -->
-        <button class="skill-badge skill-gold"
-          onclick="openModal('<div class=\'modal-header\'><h4>Optical Assembly</h4></div><div class=\'modal-body\'><p>I have had a couple years of experience assembling and splicing fiber based optical systems. These optical systems consisted of various different optical components such as splitters, isolators, AOMs, VOAs, SOAs, and more. Many of these systems where used in production atomic clocks and are currently in the field.</p></div>')">
-          <span>💡<b>Optical Assembly</b></span>
+        <button class="skill-badge skill-gold modal-trigger" data-target="opt-modal" <span>💡&nbsp;<b>Optical
+            Assembly</b></span>
           <svg class="integrated-plus" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
         </button>
         <!-- Skill 6 | Lab Experiments-->
-        <button class="skill-badge skill-blue"
-          onclick="openModal('<div class=\'modal-header\'><h4>Lab Experiments</h4></div><div class=\'modal-body\'><p>For a few years now, I have had experience testing, troubleshooting, collecting data and running experiments in a lab environment. I have worked in hazardous environments with voltages up to 1000V, and fiber based IR lasers with ~100mW optical power. I also have experience using various equipment such as photodetectors, oscilloscopes, spectrum analyzers, function generators, and more.</p></div>')">
-          <span>🔬<b>Lab Experiments</b></span>
+        <button class="skill-badge skill-blue modal-trigger" data-target="lab-modal" <span>🔬&nbsp;<b>Lab
+            Experiments</b></span>
           <svg class="integrated-plus" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -388,8 +373,7 @@
           </div>
         </a>
         <!-- Expansion Button (Outside the badge, aligned with other sections) -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>CID - Basic</h4></div><div class=\'modal-body\'><p>CID (Certified Interconnect Designer) is a certification that represents a working knowledge of IPC industry wide PCB design standards. You can check the validity of my certification by entering my certificate serial number at the website linked by this badge.</p></div><div class=\'modal-footer\'>This certification does not expire.</div>')">
+        <button class="expand-btn modal-trigger" data-target="cid-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -407,9 +391,8 @@
             <span class="cert-meta">Issued Mar 2017 • Credential ID C-QFKZJV9BBR</span>
           </div>
         </a>
-        <!-- Expansion Button (Outside the badge, aligned with other sections) -->
-        <button class="expand-btn"
-          onclick="openModal('<div class=\'modal-header\'><h4>CSWA</h4></div><div class=\'modal-body\'><p>CSWA (Certified SolidWorks Associate) is a certification that represents a basic proficiency in using SolidWorks. You can check the validity of my certification by clicking this badge.</p></div><div class=\'modal-footer\'>This certification does not expire.</div>')">
+        <!-- Expansion Button -->
+        <button class="expand-btn modal-trigger" data-target="cswa-modal">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
           </svg>
@@ -421,7 +404,7 @@
   <!-- Place the Action Buttons OUTSIDE and BELOW the slab -->
   <div class="action-buttons-container">
     <!-- 2. Share Resume -->
-    <button class="action-btn" onclick="shareResume()">
+    <button class="action-btn" id="share-btn">
       <svg viewBox="0 0 24 24">
         <path
           d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
@@ -441,12 +424,339 @@
     <div class="footer-links">
       <a href="https://github.com/evanpopp/work_site" target="_blank">Source Code</a>
       <span>•</span>
-      <a
-        onclick="openModal('<div class=\'modal-header\'><h4>Asset Credits</h4></div><div class=\'modal-body\'>• Prism icons created by Adib Sulthon - <a href=\'https://www.flaticon.com/free-icons/prism\' target=\'_blank\' title=\'prism icons\'>Flaticon</a> <br>• Robot icons created by Hilmy Abiyyu A. - <a href=\'https://www.flaticon.com/free-icons/robot\' target=\'_blank\' title=\'robot icons\'>Flaticon</a> <br>• Question icons created by Pixel perfect - <a href=\'https://www.flaticon.com/free-icons/question\' target=\'_blank\' title=\'question icons\'>Flaticon</a></div>')">Attributions</a>
+      <a href="#" class="modal-trigger" data-target="attributions-modal">Attributions</a>
       <span>•</span>
-      <a
-        onclick="openModal('<div class=\'modal-header\'><h4>Privacy Notice</h4></div><div class=\'modal-body\'>This site does not collect, track, or share personal data, nor does it use tracking cookies. Standard server access logs are stored briefly for security and diagnostic purposes only.</div>')">Privacy</a>
+      <a href="#" class="modal-trigger" data-target="privacy-modal">Privacy</a>
   </footer>
+
+  <!-- Template for guide -->
+  <template id="guide-modal">
+    <div class="modal-header">
+      <h4>Welcome</h4>
+    </div>
+    <div class="modal-body">
+      <p>Hello! Thank you for visiting!
+
+        My goal with this site is to convey my professional background with ease, while also providing in-depth detail
+        of my work and accomplishments. If you would like to contact me, please do not hesitate to do so.</p>
+      <br><b>Site Guide:</b></br>
+      <p>On this site, I use a combination of pop-ups and links to give more in-depth detail. Any badge with a + sign
+        signifies a pop-up, with the remaining badges being links. At the top right, you can use those links to contact
+        me or view my GitHub. At the bottom, you can share this site and/or download my resume. At the very bottom of
+        this page, you can use those links to view the source code for this site, the privacy policy and the favicon
+        attributions.</p>
+    </div>
+  </template>
+
+  <!-- Template for MS -->
+  <template id="ms-modal">
+    <div class="modal-header">
+      <h4>Master of Science</h4>
+    </div>
+    <div class="modal-body">
+      <p>In graduate school, I have been able to pursue further education directly related to the field of photonics. I
+        have also had the opportunity to work as a graduate student researcher, which allowed me to pursue my interests
+        in a lab.</p>
+      <br><b>Notable Courses:</b></br>
+      <ul class='modal-list'>
+        <li>ECE 240C: Optical Modulation and Detection</li>
+        <li>ECE 240A: Lasers and Optics</li>
+        <li>ECE 212C: Nanophotonics</li>
+        <li>ECE 212A: Nanoscience and Nanotechnology</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for BS -->
+  <template id="bs-modal">
+    <div class="modal-header">
+      <h4>Bachelor of Science</h4>
+    </div>
+    <div class="modal-body">
+      <p>During my undergraduate studies, I learned the fundamentals of electrical engineering with my area of focus
+        being photonics. This depth overall focused on the classical and quantum aspects of light, but also covered
+        semiconductor physics and the fundamentals of electromagnetics.</p>
+      <br><b>Notable Courses:</b></br>
+      <ul class='modal-list'>
+        <li>PHYS 2D: Relativity and Quantum Physics</li>
+        <li>ECE 185: Lasers and Modulators</li>
+        <li>ECE 183: Optical Electronics</li>
+        <li>ECE 182: Electromagnetic Optics</li>
+        <li>ECE 135A: Semiconductor Physics</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for AS -->
+  <template id="as-modal">
+    <div class="modal-header">
+      <h4>Associate in Science</h4>
+    </div>
+    <div class="modal-body">
+      <p>At this community college, I fulfilled all of my general education, and foundational physics/mathematics
+        requirements before transferring to UCSD. I also had the opportunity to take classes teaching the fundamentals
+        of
+        CAD. This is where I received my CSWA certification. I decided to go to community college first to minimize any
+        potential student debt.</p>
+    </div>
+  </template>
+
+  <!-- Template for GSR -->
+  <template id="gsr-modal">
+    <div class="modal-header">
+      <h4>UCSD Research</h4>
+    </div>
+    <div class="modal-body"><img src='/public/2D_transfer.webp' alt='2D Transfer' class='modal-body-image'>
+      <p>In this role, I came up with my own research topic to pursue while in graduate studies. My research area of
+        choice involved utilizing the phenomena of inelastic electron tunneling to design an ultrafast, compact and
+        incoherent optical emitter. This research had to stop, however, due to NSF funding cuts.</p>
+      <br><b>Responsibilities and Achievements:</b></br>
+      <ul class='modal-list'>
+        <li>Utilized Python and Ansys Lumerical to simulate the quantum aspects of my designs as well as verify
+          nano-antenna scattering efficiencies respectively.</li>
+        <li>Designed and built an affordable 2D material transfer station with an optional air-tight enclosure for a
+          nitrogen atmosphere.</li>
+        <li>Received some experience in 2D transfer and heterostructure stacking.</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for VA -->
+  <template id="va-modal">
+    <div class="modal-header">
+      <h4>Vector Atomic</h4>
+    </div>
+    <div class="modal-body"><img src='/public/VA_groupshot.webp' alt='VA Groupshot' class='modal-body-image'>
+      <p>Vector Atomic focuses on developing precision timing and measurement devices using quantum technologies. This
+        was the first full-time engineering job that I received after graduating with my Bachelors. In this role, I was
+        able to use my range of engineering experience and my photonics education to continue to improve the
+        capabilities of the optical atomic clock product line.</p>
+      <br><b>Responsibilities and Achievements:</b></br>
+      <ul class='modal-list'>
+        <li>Developed piezoelectric laser wavelength tuning drivers used for atomic clock frequency locking.</li>
+        <li>Designed prototype circuits used for laser pump modulation, liquid lens control, and spectroscopy signal
+          acquisition.</li>
+        <li>Assembly, testing and troubleshooting CW fiber laser systems.</li>
+        <li>Testing and debugging electrical designs in a lab environment.</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for Ametek -->
+  <template id="ametek-modal">
+    <div class="modal-header">
+      <h4>Ametek</h4>
+    </div>
+    <div class="modal-body"><img src='/public/tahoe.webp' alt='Tahoe' class='modal-body-image'>
+      <p>Ametek Programmable Power focuses on the design and manufacturing of power supplies and test equipment. I
+        worked at this company part-time during my undergrad education, right after Hughes Circuits. I joined this
+        company to get more experience in electrical design and testing, rather than just pure layout. </p>
+      <br><b>Responsibilities and Achievements:</b></br>
+      <ul class='modal-list'>
+        <li>Developed analog sensors, control circuitry and PCBs for power supplies up to 45kW (shown above).</li>
+        <li>Modified and designed sheet metal chassis, CNC machined bus bars, and high power magnetics.</li>
+        <li>Designed cable harnesses in conjunction with complete electro-mechanical assemblies.</li>
+        <li>Tested high-power electrical components for production and R&D development.</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for USMC -->
+  <template id="usmc-modal">
+    <div class="modal-header">
+      <h4>USMC Reserves</h4>
+    </div>
+    <div class="modal-body"><img src='/public/USMC_groupshot.webp' alt='USMC Groupshot' class='modal-body-image'>
+      <p>I joined the USMC Reserves right out of high school. Joining the Marines was somewhat of a family tradition. I
+        wanted to do this while pursuing my passion for engineering. I would attend training one weekend per month and
+        then a 2-week session over the summer.</p>
+      <br><b>Responsibilities and Achievements:</b></br>
+      <ul class='modal-list'>
+        <li>Repaired and maintained small arms and various equipment.</li>
+        <li>Taught at a leadership course for Marines in the reserve.</li>
+        <li>Was a Combat Marksmanship Coach for my secondary occupation.</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for Hughes -->
+  <template id="hughes-modal">
+    <div class="modal-header">
+      <h4>Hughes Circuits</h4>
+    </div>
+    <div class="modal-body">
+      <p>Hughes Circuits focuses on the speedy manufacturing and layout of PCBs, primarily for DoD contractors. I worked
+        at this company part-time during my undergrad education. This was the first engineering job I had, and I was
+        able to get it from the CAD education I received at community college.</p>
+      <br><b>Responsibilities and Achievements:</b></br>
+      <ul class='modal-list'>
+        <li>Designed class 3 PCBs for a wide range of purposes for DoD contractors.</li>
+        <li>Received CID certification.</li>
+      </ul>
+    </div>
+  </template>
+
+  <!-- Template for paper -->
+  <template id="paper-modal">
+    <div class="modal-header">
+      <h4>Three-Node Timing Network</h4>
+    </div>
+    <div class="modal-body">
+      <p>In this paper, my team and I experimentally demonstrated that our optical clocks could be synced over a 14.5km
+        free-space optical link at NIST. This was one of the first projects that I worked on at this company. For my
+        contribution, I assisted in designing and building the various racks used to hold the clocks and equipment. I
+        was also present during the experiment and assisted in setting it up.</p>
+    </div>
+    <div class='modal-footer'>
+      This paper is currently in review
+    </div>
+  </template>
+
+  <!-- Template for spie conf -->
+  <template id="spie-modal">
+    <div class="modal-header">
+      <h4>Optical Timekeeping in the Field</h4>
+    </div>
+    <div class="modal-body">
+      <p>In this conference, my team presented and showed off the various capabilities of our optical clocks, as well as
+        the experiments the clocks were a part of. For my contribution, I was attributed for my design work with the
+        updated clock. I also assisted in setting up field experiments to test the environmental ruggedness of the
+        clock.</p>
+    </div>
+  </template>
+
+  <!-- Template for lab skill -->
+  <template id="lab-modal">
+    <div class="modal-header">
+      <h4>Lab Experiments</h4>
+    </div>
+    <div class="modal-body">
+      <p>For a few years now, I have had experience testing, troubleshooting, collecting data and running experiments in
+        a lab environment. I have worked in hazardous environments with voltages up to 1000V, and IR fiber lasers
+        with ~100mW optical power. I also have experience using various equipment such as photodetectors, oscilloscopes,
+        spectrum analyzers, function generators, and more.</p>
+    </div>
+  </template>
+
+  <!-- Template for optical skill -->
+  <template id="opt-modal">
+    <div class="modal-header">
+      <h4>Optical Assembly</h4>
+    </div>
+    <div class="modal-body">
+      <p>I have had a couple years of experience assembling and splicing fiber-based optical systems. These optical
+        systems consisted of various different optical components such as splitters, isolators, AOMs, VOAs, SOAs, and
+        more. Many of these systems were used in production atomic clocks and are currently in the field.</p>
+    </div>
+  </template>
+
+  <!-- Template for electrical skill -->
+  <template id="elec-modal">
+    <div class="modal-header">
+      <h4>Electrical Design</h4>
+    </div>
+    <div class="modal-body">
+      <p>For a few years now, I have had experience designing electrical circuits and systems in industry, with
+        assistance from simulation tools such as LTSpice. I have had a range of design experience, from analog sensing
+        and control circuitry in power supplies, customer facing outputs and controls, and very low-noise opto-electric
+        interfaces. I've also had experience with digital interfaces and mixed signal designs utilizing SPI, I2C and UART.</p>
+    </div>
+  </template>
+
+  <!-- Template for pcb skill -->
+  <template id="pcb-modal">
+    <div class="modal-header">
+      <h4>PCB Design</h4>
+    </div>
+    <div class="modal-body">
+      <p>For multiple years I have had experience designing PCBs using both Altium and PADs. This was one of the first
+        industry skills that I gained. I have had experience designing PCBs for a wide range of purposes, such as RF,
+        high-speed digital, high-power, analog and various mixed-signal designs.</p>
+    </div>
+  </template>
+
+  <!-- Template for mechanical skill -->
+  <template id="mech-modal">
+    <div class="modal-header">
+      <h4>Mechanical Design</h4>
+    </div>
+    <div class="modal-body">
+      <p>I have been utilizing SolidWorks in industry for multiple years, I also recently started using AutoDesk 360 for
+        personal projects and my research. I have experience designing sheet metal chassis, CNC machined mounting
+        components, professionally 3D printed parts, cable and harness design, as well as creating assembly instructions
+        for production.</p>
+    </div>
+  </template>
+
+  <!-- Template for coding skill -->
+  <template id="coding-modal">
+    <div class="modal-header">
+      <h4>Python | C</h4>
+    </div>
+    <div class="modal-body">
+      <p>I have been coding in Python consistently for a couple of years now. For about half of that time I utilized C.
+        In industry, I would often use a combination of Python and C to record/manipulate data and program MCUs
+        respectively. During my time in graduate studies, I used Python extensively for predicting the quantum behavior
+        of my research designs, as well as for my schoolwork.</p>
+    </div>
+  </template>
+
+  <!-- Template for CID Modal -->
+  <template id="cid-modal">
+    <div class="modal-header">
+      <h4>CID - Basic</h4>
+    </div>
+    <div class="modal-body">
+      <p>CID (Certified Interconnect Designer) is a certification that represents a working knowledge of IPC industry-wide
+        PCB design standards. You can check the validity of my certification by entering my certificate ID
+        at the website linked by this badge. <br> My credential ID is: CID-20022621042</p>
+    </div>
+    <div class='modal-footer'>
+      This certification does not expire.
+    </div>
+  </template>
+
+  <!-- Template for CSWA Modal -->
+  <template id="cswa-modal">
+    <div class="modal-header">
+      <h4>CSWA</h4>
+    </div>
+    <div class="modal-body">
+      <p>CSWA (Certified SolidWorks Associate) is a certification that represents a basic proficiency in using
+        SolidWorks.
+        You can check the validity of my certification by clicking this badge.</p>
+    </div>
+    <div class='modal-footer'>
+      This certification does not expire.
+    </div>
+  </template>
+
+  <!-- Template for Privacy Modal -->
+  <template id="privacy-modal">
+    <div class="modal-header">
+      <h4>Privacy Notice</h4>
+    </div>
+    <div class="modal-body">
+      This site does not collect, track, or share personal data, nor does it use tracking cookies. Standard server
+      access logs are stored briefly for security and diagnostic purposes only.
+    </div>
+  </template>
+
+  <!-- Template for Attributions Modal -->
+  <template id="attributions-modal">
+    <div class="modal-header">
+      <h4>Asset Credits</h4>
+    </div>
+    <div class="modal-body">
+      • Prism icons created by Adib Sulthon - <a href="https://www.flaticon.com/free-icons/prism" target="_blank"
+        title="prism icons">Flaticon</a> <br>
+      • Robot icons created by Hilmy Abiyyu A. - <a href="https://www.flaticon.com/free-icons/robot" target="_blank"
+        title="robot icons">Flaticon</a> <br>
+      • Question icons created by Pixel perfect - <a href="https://www.flaticon.com/free-icons/question" target="_blank"
+        title="question icons">Flaticon</a>
+    </div>
+  </template>
+
   <!-- Modal Overlay Element -->
   <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
