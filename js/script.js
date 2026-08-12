@@ -5,6 +5,7 @@ function openModal(text) {
   if (overlay && modalText) {
     modalText.innerHTML = text;
     overlay.classList.add('active'); // Adds the CSS class to fade it in
+    document.body.classList.add('modal-open'); // Prevents background scrolling
   }
 }
 
@@ -12,6 +13,7 @@ function closeModal() {
   const overlay = document.getElementById('modalOverlay');
   if (overlay) {
     overlay.classList.remove('active'); // Removes the class to fade it out
+    document.body.classList.remove('modal-open'); // Restores background scrolling
   }
 }
 

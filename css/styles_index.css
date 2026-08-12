@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
@@ -63,6 +67,11 @@ body.performance-mode .frosted-text {
 /* Stops the bouncing arrow animation */
 body.performance-mode .click-me-indicator {
   animation: none !important;
+}
+
+/* Prevents main page scrolling while modal is active */
+body.modal-open {
+  overflow: hidden;
 }
 
 /* Frosted Text Utility */
