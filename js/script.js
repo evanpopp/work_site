@@ -104,3 +104,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const perfBtn = document.getElementById('perf-toggle-btn');
+  
+  // Only run if the button actually exists on the page
+  if (perfBtn) {
+    const btnText = perfBtn.querySelector('span');
+    const body = document.body;
+    let isPerfMode = false;
+    
+    // 1. Defensively check localStorage (Catches SecurityErrors)
+    try {
+      if (localStorage.getItem('performanceMode') === 'true') {
+        isPerfMode = true;
+        body.classList.add('performance-mode');
+        btnText.textContent = 'Enable Animations';
+      }
+    } catch (error) {
+      console.warn('Storage access blocked by security settings.');
+    }
+    
+    // 2. Listen for clicks on the toggle button
+    perfBtn.addEventListener('click', () => {
+      body.classList.toggle('performance-mode');
+      isPerfMode = body.classList.contains('performance-mode');
+      
+      // Update the button text
+      btnText.textContent = isPerfMode ? 'Enable Animations' : 'Disable Animations';
+      
+      // Defensively attempt to save the preference
+      try {
+        localStorage.setItem('performanceMode', isPerfMode);
+      } catch (error) {
+        // Fail silently if blocked, button still works for the current session
+      }
+    });
+  }
+});

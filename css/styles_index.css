@@ -37,11 +37,53 @@ body {
   }
 }
 
+/* Freezes the background animation */
+body.performance-mode {
+  animation: none !important;
+  background-position: 0% 50% !important; /* Locks the gradient in place */
+}
+
+/* Kills all expensive backdrop blurs across the site */
+body.performance-mode .glass-resume,
+body.performance-mode .modal-overlay,
+body.performance-mode .modal-content,
+body.performance-mode .experience-logo-link,
+body.performance-mode .contact-link {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(30, 30, 30, 0.85) !important; /* Darker solid fallback for contrast */
+}
+
+/* Removes the text blur which is also hard on rendering */
+body.performance-mode .frosted-text {
+  filter: none !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important; /* Stronger shadow to maintain legibility */
+}
+
+/* Stops the bouncing arrow animation */
+body.performance-mode .click-me-indicator {
+  animation: none !important;
+}
+
 /* Frosted Text Utility */
 .frosted-text {
   color: rgba(255, 255, 255, 0.85);
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
   filter: blur(0.3px);
+}
+
+/* Performance Button Layout */
+.perf-toggle-container {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.perf-toggle-btn {
+  padding: 8px 16px;
+  font-size: 0.9rem;
 }
 
 /* Glass Resume Container */
@@ -402,8 +444,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -425,18 +465,48 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
-  /* Simulates top-down lighting */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
   padding: 25px 30px;
-  max-width: 500px;
+  max-width: 600px;
   width: 90%;
   color: white;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   transform: translateY(20px) scale(0.95);
   transition: transform 0.3s ease-out;
   text-align: left;
+
+  max-height: 90vh; /* Keeps the modal slightly smaller than the screen height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Clips all content to the rounded corners */
+}
+
+/* Mobile padding adjustment for the modal */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px 15px; 
+    width: 95%; /* Optional: Lets it take up slightly more horizontal space on tiny screens */
+  }
+}
+
+/* Custom Webkit Scrollbar for #modalText */
+#modalText::-webkit-scrollbar {
+  width: 6px;
+}
+
+#modalText::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#modalText::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+#modalText::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Modal Header Layout */
@@ -468,6 +538,10 @@ body {
   text-align: left;
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Handles scrolling inside the card */
+  padding-right: 8px; /* Prevents text/content from touching the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
 .modal-body {
@@ -513,7 +587,7 @@ body {
 /* Image styling inside the glass modal */
 .modal-content img {
   max-width: 100%;
-  height: auto;
+  max-height: 400px;
   display: block;
   margin: 12px auto;
   border-radius: 8px;

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <!-- DELETE OR COMMENT THIS OUT -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=900">
   <title> Resume </title>
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="/public/prism.png">
@@ -15,6 +15,17 @@
 </head>
 
 <body>
+
+  <div class="perf-toggle-container">
+    <button id="perf-toggle-btn" class="action-btn perf-toggle-btn">
+      <svg viewBox="0 0 24 24" width="16" height="16">
+        <path
+          d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-1-15h2v6h-2V7zm0 8h2v2h-2v-2z" />
+      </svg>
+      <span>Disable Animations</span>
+    </button>
+  </div>
+
   <!-- 1. ADD ID HERE -->
   <div class="glass-resume" id="resume-container">
 
@@ -659,7 +670,8 @@
       <p>For a few years now, I have had experience designing electrical circuits and systems in industry, with
         assistance from simulation tools such as LTSpice. I have had a range of design experience, from analog sensing
         and control circuitry in power supplies, customer facing outputs and controls, and very low-noise opto-electric
-        interfaces. I've also had experience with digital interfaces and mixed signal designs utilizing SPI, I2C and UART.</p>
+        interfaces. I've also had experience with digital interfaces and mixed signal designs utilizing SPI, I2C and
+        UART.</p>
     </div>
   </template>
 
@@ -707,7 +719,8 @@
       <h4>CID - Basic</h4>
     </div>
     <div class="modal-body">
-      <p>CID (Certified Interconnect Designer) is a certification that represents a working knowledge of IPC industry-wide
+      <p>CID (Certified Interconnect Designer) is a certification that represents a working knowledge of IPC
+        industry-wide
         PCB design standards. You can check the validity of my certification by entering my certificate ID
         at the website linked by this badge. <br> My credential ID is: CID-20022621042</p>
     </div>

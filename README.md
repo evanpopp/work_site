@@ -4,6 +4,20 @@ A lightweight, modern web portfolio and bot-protected verification gateway built
 
 ---
 
+## 📷 Gallery
+Here are some pictures my website:
+
+### Home Site Example
+![Home Site](media/site_example.png)
+
+### Altcha Captcha
+![captcha](media/captcha.png)
+
+### 404: not found :(
+![404](media/404.png)
+
+---
+
 ## ✨ Features
 
 * **Proof-of-Work CAPTCHA:** Integrated [ALTCHA](https://altcha.org/) challenge to block automated bots without intrusive image puzzles.
@@ -11,6 +25,7 @@ A lightweight, modern web portfolio and bot-protected verification gateway built
 * **Rate Limiting:** IP-based endpoint limiting powered by `slowapi`.
 * **Glassmorphic UI:** Modern, responsive CSS design with dynamic blurring and custom mobile breakpoint rules.
 * **Custom Error Handling:** Dedicated Jinja2 templates for session expiration and custom 404 pages.
+* **Low Performance Mode:** Optional toggle to disable animations for ease of reading and/or reduce GPU utilization.
 
 ---
 
