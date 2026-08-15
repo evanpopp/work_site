@@ -36,7 +36,7 @@ Make sure you have Python 3.10+ installed.
 
 ### 2. Clone the Repository
 ```bash
-git clone [https://github.com/evanpopp/work_site.git](https://github.com/evanpopp/work_site.git)
+git clone https://github.com/evanpopp/work_site.git
 cd work_site
 ```
 
